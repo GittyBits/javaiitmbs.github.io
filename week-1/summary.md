@@ -273,7 +273,7 @@ After shifting, the point becomes ($x$, $y$) $\to$ ($x + \Delta x$, $y + \Delta 
 
 You can also calculate the distance from the origin using the formula:
 
-d = $\sqrt{x^2 + y^2}$ , we can define a function for it.     
+d = $\sqrt{x^2 + y^2}$ , we can define a function for it.   $x$   
 
 ```python
 class Point:
