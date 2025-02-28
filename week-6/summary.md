@@ -10,7 +10,7 @@ img {
 <span style="display:flex; justify-content: space-between;">
     <a href="https://javaiitmbs.github.io/week-5/summary.html">Week 5</a>
     <a href="https://javaiitmbs.github.io/index.html">Home</a>
-    <a href="https://javaiitmbs.github.io/week-7/summary.html">Week 6</a>
+    <a href="https://javaiitmbs.github.io/week-7/summary.html">Week 7</a>
 </span> 
 <hr>
 
