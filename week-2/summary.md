@@ -95,7 +95,7 @@ In the given example, we can see that the function named square takes in a numbe
 There are certain rules we need to follow in order to save a Java program before we can finally run it. The file name needs to be exactly same as the class contained in the file. 
 
 ```java
-public class MyProgram{
+public class myprogram{
   public int num;
   public void printNum(){
     System.out.print(num);
@@ -103,7 +103,7 @@ public class MyProgram{
 }
 ```
 
-The above program needs to be saved in a file named MyProgram.java for it to be ready for execution. Note that it is necessary for every file to have the extension .java
+The above program needs to be saved in a file named myprogram.java for it to be ready for execution. Note that it is necessary for every file to have the extension .java
 
 ## Running a JAVA Program
 
