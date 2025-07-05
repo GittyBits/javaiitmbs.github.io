@@ -12,30 +12,21 @@
 # Programming concepts:
 ## Programming languages
 ### Programming language:
-Programming languages are used to convey computational ideas to a machine that can execute them. Machine language is the only programming language that the machine can understand directly. Machine language instructions are binary coded and low level machine instructions may transfer the contents of one memory location to a CPU register or add numbers in two registers. So, let's take two registers R1 and R2. Add the contents of these two registers and store the result back in R1. Then you would take the contents of a register R1 put it back in memory. So, that you can free up the register for later work and also ensures the data is stored in memory. if you do not put it back in the memory the value is lost when the computer is switched off. So, this is obviously a very tedious and error prone way to program.
-
-High level Programming languages were developed to enable programmers to write programs faster than low level machine language. A programming language is intended for mathematical computation, allows programmers to express numerical equations directly as:
-```
-X = (Y + Z) / 2
-```
-Since programs written in a high-level programming language are not recognized by the machine directly, we must use a compiler or interpreter to translate them to machine understandable language. 
 ### Compiler:
-* A compiler translates the entire program into machine language in a single run.
-* Compiler is faster than an interpreter because it takes the entire program during translation.
-* Compiler generates the intermediate code so it requires more memory than interpreter.
+* Entire
+* Fast
+* More memory 
 
 ### Interpreter
-* An interpreter translates the entire program into machine language line by line. 
-* Interpreter is slower than an compiler because it translates the program line by line.
-* Interpreter never generates the intermediate code so it requires less memory than compiler.
+* Line by Line
+* Slow
+* Less memory
 
 ## Programming styles 
-There are mainly two types of programming styles: Imperative and Declarative programming.
 
 ### Imperative programming:	 
-* An imperative programming tells the computer exactly how to do something?
-* In imperative style, we tell how exactly we want to achieve the result. 
-* In imperative style use intermediate variables.
+* Deals with "how" we want to achieve
+* Use intermediate variables
 
 **Example:**
 ```python
@@ -49,9 +40,8 @@ print(factorial(5))
 ```
 
 ### Declarative Programming: 
-* A declarative programming means tells the computer what would we like to do and leave the part of how to do it. 
-* In declarative style we actually say what results we want to get or what exactly we want to do.
-* In declarative style does not use intermediate variables.
+* Deals with "what" we want to achieve
+* No intermediate variables
 
 **Example:**
 ```python
@@ -64,32 +54,9 @@ print(factorial(5))
 
 ```
 
-### The role of types
-A variable is a memory location to store a value, and every variable has a type. How is the variable type determined in Java and Python?
-Python uses dynamic typing for variables where  variable type is determined by assigning a value to it.  During runtime variable value decides its type.   
-**Example:**
-```python
-x = 10 # x is of type int
-x = 7.5 # now x is of type float
-```
-If you determine the type in advance then it is called `static typing`. Java associates a type in advance with every variable name.  Any type of mismatch errors must be caught by the compiler during compilation.
-**Example:**
-
-```Java
-int x, float a;
-x = 7.5; 
-y = 6.57   
-```
-In the above statements, two variables are declared and variable `x` is initialized with incompatible value.
-In Java, any type of errors is caught early by the compiler. If you try to assign an incompatible value to a variable, the compiler will identify it and throw an error.   
-
 ## Memory management
 Whenever a function is invoked for execution, function needs memory for local variables, these local variables are used to store the intermediate results.  
 ### Activation Record
-* An activation record is a block of memory associated with an invocation of a function. 
-* An activation record is pushed into the stack when a function is called and it is popped out when the control returns to the caller function.
-
-Consider an example given below 
 **Example:**
 ```python
 def factorial(n):
@@ -103,113 +70,30 @@ print(factorial(3))
 
 <img src="../assets/Activation records.jpg" width=30% />
 
- Whenever  `factorial(3)` is called one activation is record is inserted into the stack memory, every activation record has memory for local variables, `control link` and `return value link`.
-
-* `Control links` points to the `previous activation record`.
-* `Return value link` tells where to store the result.
-
-In above image `factorial(3)` calls  `factorial(2)` and  `factorial(2)` calls  `factorial(1)` so that two more activation records will be inserted in stack memory as shown in the figure.
-
-Here  `factorial(2)` control link points to the  `factorial(3)` and  `factorial(2)` control link points to the  `factorial(1)`. 
-
-Here  `factorial(2)` return value will be stored in  `factorial(3)`, and the  `factorial(1)` return value will be stored in  `factorial(2)`.
-
+* Control link acts as a pointer to the function that is being called
+* Return value link as the name says itself stores the value to be returned
+* Call is always from lower to higher
 ### Heap memory 
-Heap memory is used for the dynamic memory allocation in Java at the time of execution (runtime). Whenever new objects are created, memory would be allocated  in the heap memory. For example `LinkedList` uses `dynamic memory allocation`, it requires memory for new nodes as needed. `LinkedList` is implemented in heap memory because it's size is not fixed and can grow and shrink as needed whenever a node is inserted or deleted.
+* Basically two types of memmory
+* Heap and Stack
+* Heap is dynamic which means it would be created at the time of execution
+* Used when new objects are created such as LinkedList whose size can grow and shrink whenever a node is inserted/deleted
 
-Unlike stack memory, allocations in heap memory are not free-up automatically.  `Java Virtual Machine` uses a mechanism called `Garbage collection` to free-up the heap memory allocations. It identifies the objects which are not being used anymore by the Java program in execution and frees up the unused memory so other new objects can use that piece of memory.  
-
-In other programming languages like C and C++, programmer has to take care of freeing the memory allocated to unused objects. As a result it consumes the programmer time and increases the code complexity.
-
-## Abstraction and Modularity
-### Stepwise refinement
-Consider the problem of computing and printing the first 1000 prime numbers. How this task can be achieved? To achieve this task we can develop a program  by first outlining the major tasks that it should perform and then successively refining these tasks into smaller subtasks, until a level is reached at which each remaining task can be expressed easily by basic operations. This produces subproblems that are small enough to be understood and separate enough to be solved independently. See the first version of this program. 
-
-```
-begin
-    print first thousand prime numbers
-end
-```
-
-The above task can now be divided into subtasks. To divide the problem in two, some data structure must be selected for passing the result of the first subtask to the second. Here the data structure is a table, which will be filled with the first 1000 prime numbers.
-
-See the second version of this program.
-
-```
-begin
-	declare table p
-	fill table p with first thousand primes
-	print table p
-end
-```
-In the next version each subtask are further elaborated. Here each subtask is considered independently, the problem of filling the table with primes is 
-independent of the problem of printing the table. Therefore, each subtask can be assigned to a different  programmer, allowing the problems to be solved at the same time by different people. 
-See the final version of this program.
-``` 
-begin
-	integer array p[1:1000]
-	for k from 1 through 1000
-		make p[k] equal to the kth prime number
-	for k from 1 through 1000
-		print p[k]
-end
-```
-
-### Data refinement
-
-In addition to dividing the tasks into simpler and manageable subtasks, evolution in a system design may lead to changes in the data  structures that are used to combine the actions of independent modules.
-
-Consider developing a simple banking program. The main goal of this program is to create a new account, deposit an amount, withdraw an amount, and print monthly/quarterly bank statements. In the first version of this program, we might formulate a system design that has the following functions:
-
-```CreateAccount(), Deposit()/Withdraw(), PrintStatement()```
-In this program development, the main function receives a list of input transactions and calls the appropriate functions. Assume that statements only contain the account number and balance, then we can represent a single bank account by an integer value and store all bank accounts in a single integer array.
-
-Later refine the task Print Statement() to include the subtask "Print the transactions list," then we will have to maintain a record of bank transactions. For this refinement, we will have to replace the integer array with some other data structure that records the sequence of transactions that have occurred since the last statement. This may require changes in the behavior of all the subtasks, as all of them perform operations on bank accounts.
 
 ### Modular software development
 
-`Divide and conquer` is one of the fundamental technique. It is important to divide large and complex programs into smaller and manageable  parts called functions or procedures, that can be solved  independently. Use refinement to divide the program into functions or procedures. These functions or procedures called to generate the solutions. The solutions generated by these functions are combined to provide the overall solution for the main program. 
+There are two important concepts in modular program development: 
 
-Prototyping is a development method, involves implementing smaller parts of a program in a simple way to understand if the design will really work. Then, after the design has been tested in some way, one can improve parts of the program independently by reimplementing them. 
-
-There are two important concepts in modular program development: interfaces and specifications.
-
-* `Interface`: It is a description of the parts of a component that are visible to other program components.
-* `Specification`: It is a description of the behavior of a component, as observable through its interface.
-
-### Programming language support for abstraction
-In programming languages, an abstraction is an important `object oriented principle` that separates a implementation of program from it's  interface.
-**Control abstraction**
-
-In earlier days of programming, abstractions are implemented using the `procedures` or `functions`.
-
-`procedures` or `functions` are used encapsulate the block of code, and the implementation of a function is the function body, which consists of the instructions that will be executed whenever function is being invoked.
-
-**Data abstraction**
-
-Data abstraction is refers to the hiding information about the way data is represented. 
-
-**Abstract datatype**
-
-`Abstract datatype` exposes what the operations that are performed on the data structure and what are the values permitted to store in the data structure rather than how it is implemented. Here the operations and values permitted on the data structure are visible to the other parts of a program using a public `interface` .
-
-There are three main goals of abstraction:
-
-1. Identify the interface of the data structure. The interface of a data abstraction contains the operations permitted on the data structure, and their arguments and return result.
-2. Provides information hiding  by separating implementation decisions from parts of the program that use the data structure through an interface.
-3. Allows the data structure to be used in many different ways by many other programs.
-
-**Example**
-Stack is a linear data structure. If it is implemented using an array, then programs that use a stack abstract data type can see and use only the operations performed on the stack  (push() and pop()), not array operations such as indexing into the array at arbitrary points. This hides information about the implementation of a data structure and allows the implementer of the data structure to make changes without affecting parts of the programs that use the data structure.
+* `Interface`: Description of the parts 
+* `Specification`: Description of the behavior of a component
+  
 ## Object-oriented programming
 There are few basic concepts of object-oriented programming (OOP).
 ### Object
 Object are like abstract datatypes. Every object has its own data (also called state) and operations (also called methods/messages). A program written in object-oriented style will consist of interacting objects. For example, a `Student` object may consist of data such as name, gender, birth date, home address, phone, and age, and operations for assigning and changing these data values. 
 ### Inheritance
 
-Inheritance is the process by which one object re-use the implementations of another object. For example if you consider an organization that has two types of employee namely `Employee` and `Manager`. A `Manager` is also an `Employee` but  every `Employee` is not a `Manager`.
-
-Here `Employee` class has functionality like basic personal data, date of joining. This same data also required for a `Manager` class, using inheritance we can use the functionality of `Employee` in the `Manager` class. You can also add extra functionality to the `Manager` like `date of promotion, seniority (in current role)` if required .    
+Inheritance is the process by which one object re-use the implementations of another object.  Using inheritance we can use the functionality of `Employee` in the `Manager` class. You can also add extra functionality to the `Manager` like `date of promotion, seniority (in current role)` as every `Manager` is alo an `Employee`.    
 
 ### Subtyping
 A subtype is a specialization of a type, If A is a subtype of B, wherever an object of type B is needed, an object of type A can be used. Every object of type A is also an object of type B. If f() is a method in B and A is a subtype of B, every object of A also supports f().
